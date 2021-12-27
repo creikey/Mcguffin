@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://InventoryFrame.png" type="Texture" id=1]
-[ext_resource path="res://GadgetInventoryInfo.gd" type="Script" id=2]
+[ext_resource path="res://gadgets/GadgetInventoryInfo.gd" type="Script" id=2]
 
 [node name="GadgetInventoryInfo" type="Control"]
 margin_right = 70.0

@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Gadget",
 "language": "GDScript",
-"path": "res://Gadget.gd"
+"path": "res://gadgets/Gadget.gd"
 }, {
 "base": "Node",
 "class": "GadgetAPI",
 "language": "GDScript",
-"path": "res://GadgetAPI.gd"
+"path": "res://gadgets/GadgetAPI.gd"
 }, {
 "base": "Area",
 "class": "GadgetPurchase",
 "language": "GDScript",
-"path": "res://GadgetPurchase.gd"
+"path": "res://gadgets/GadgetPurchase.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mcguffin"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://prototype-levels/SimpleMain.tscn"
 config/icon="res://icon.png"
 
 [input]

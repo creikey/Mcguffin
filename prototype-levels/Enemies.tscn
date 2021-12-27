@@ -1,0 +1,276 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://prototype-levels/SimpleMain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://shanghai_riverside_1k.exr" type="Texture" id=2]
+[ext_resource path="res://prototype-levels/DumBat.gd" type="Script" id=3]
+
+[sub_resource type="PanoramaSky" id=5]
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=7]
+background_mode = 2
+background_sky = SubResource( 5 )
+ambient_light_energy = 0.23
+glow_enabled = true
+adjustment_brightness = 0.68
+adjustment_contrast = 1.27
+
+[sub_resource type="OpenSimplexNoise" id=10]
+seed = 477
+period = 5.8
+persistence = 0.103
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.74
+height = 1.7
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 0.74
+mid_height = 1.7
+
+[sub_resource type="Animation" id=11]
+resource_name = "Chase"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BatPivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 4.23375e-06, 9.07931e-06, -100 ), Vector3( 0, 190, -75 ), Vector3( 0, 0, -100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BatPivot/Bat:material_override:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.192157, 0.192157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BatPivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.267943, 4, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -30 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BatPivot/Bat:material_override:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.976471, 1, 0.219608, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BatPivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BatPivot/Bat:material_override:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.976471, 1, 0.219608, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BatPivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 0.116629, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 260 ), Vector3( -60, 135, 170 ), Vector3( 0, 0, 260 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BatPivot/Bat:material_override:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.192157, 0.192157, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "swing"
+} ]
+}
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 0.976471, 1, 0.219608, 1 )
+emission_energy = 4.56
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.3, 2, 0.3 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 2, 4, 6 )
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Chase"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Swing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+advance_condition = "aggro"
+xfade_time = 0.19
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+advance_condition = "idle"
+xfade_time = 0.63
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+advance_condition = "swing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
+states/Chase/node = SubResource( 13 )
+states/Chase/position = Vector2( 544, 84 )
+states/Idle/node = SubResource( 14 )
+states/Idle/position = Vector2( 367, 77 )
+states/Swing/node = SubResource( 19 )
+states/Swing/position = Vector2( 726, 46 )
+transitions = [ "Idle", "Chase", SubResource( 15 ), "Chase", "Idle", SubResource( 16 ), "Chase", "Swing", SubResource( 20 ), "Swing", "Chase", SubResource( 21 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 109, -45 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[node name="Enemies" instance=ExtResource( 1 )]
+
+[node name="DirectionalLight" parent="Level" index="1"]
+visible = false
+
+[node name="WorldEnvironment" parent="Level" index="2"]
+environment = SubResource( 7 )
+
+[node name="DumBat" type="KinematicBody" parent="Level" index="6" groups=["entities"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -17 )
+script = ExtResource( 3 )
+wandernoise = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/DumBat" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/DumBat" index="1"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="SpotLight" type="SpotLight" parent="Level/DumBat" index="2"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, -1 )
+light_energy = 10.045
+spot_range = 14.0
+spot_angle = 33.1266
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/DumBat" index="3"]
+anims/Chase = SubResource( 11 )
+anims/Idle = SubResource( 8 )
+anims/RESET = SubResource( 6 )
+anims/Swing = SubResource( 12 )
+
+[node name="BatPivot" type="Position3D" parent="Level/DumBat" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, -1 )
+
+[node name="Bat" type="MeshInstance" parent="Level/DumBat/BatPivot" index="0"]
+transform = Transform( -2.98023e-08, -1, 0, 1, -2.98023e-08, 0, 0, 0, 1, -0.7, 0, 0 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="SightArea" type="Area" parent="Level/DumBat" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/DumBat/SightArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+shape = SubResource( 9 )
+
+[node name="GonnaFall" type="RayCast" parent="Level/DumBat" index="6"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -6 )
+
+[node name="GonnaCrash" type="RayCast" parent="Level/DumBat" index="7"]
+enabled = true
+cast_to = Vector3( 0, 0, -5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Level/DumBat" index="8"]
+tree_root = SubResource( 17 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 18 )
+parameters/conditions/aggro = false
+parameters/conditions/idle = true
+parameters/conditions/swing = false
+
+[connection signal="body_entered" from="Level/DumBat/SightArea" to="Level/DumBat" method="_on_SightArea_body_entered"]

@@ -70,6 +70,9 @@ func _clear_toolbelt():
 func can_jump() -> bool:
 	return is_on_floor()
 
+func hit(damage: int, from_point: Vector3):
+	vel = (global_transform.origin - from_point).normalized()*50.0
+
 func _input(event):
 	if event.is_action_pressed("capture_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
