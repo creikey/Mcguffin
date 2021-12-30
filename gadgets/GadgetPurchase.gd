@@ -9,6 +9,11 @@ onready var icon_mesh: MeshInstance = $CollisionShape/Button/Icon
 onready var icon: Texture = scene.instance().inventory_icon # does this leak memory? probably
 
 func _ready():
+#	var price_mat: SpatialMaterial = $CollisionShape/Button/Icon/MeshInstance.material_override
+#	price_mat.albedo_texture = ViewportTexture.new()
+#	price_mat.albedo_texture.viewport_path = "Viewport"
+#	$CollisionShape/Button/Icon/MeshInstance.material_override = price_mat
+	
 	icon_mesh.material_override = icon_mesh.material_override.duplicate(true)
 	var mat: SpatialMaterial = icon_mesh.material_override
 	mat.albedo_texture = icon

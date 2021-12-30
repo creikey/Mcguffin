@@ -26,24 +26,15 @@ transform = Transform( -0.999684, 0, 0.02513, 0, 1, 0, -0.02513, 0, -0.999684, 7
 environment = SubResource( 7 )
 
 [node name="Spawnpoint" parent="Level" index="1"]
-transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 13, 4, 24 )
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 12, 4, 23 )
 
 [node name="DumBat" parent="Level" index="2" instance=ExtResource( 3 )]
-transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -28, 8, -5 )
+transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 9, 8, -5 )
 
-[node name="DumBat3" parent="Level" index="3" instance=ExtResource( 3 )]
-transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -70, 8, -29 )
-
-[node name="DumBat4" parent="Level" index="4" instance=ExtResource( 3 )]
-transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -64, 8, 9 )
-
-[node name="DumBat2" parent="Level" index="5" instance=ExtResource( 3 )]
-transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 4, 10, 1 )
-
-[node name="FinishLine" parent="Level" index="6"]
+[node name="FinishLine" parent="Level" index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 16 )
 
-[node name="Prototype" parent="Level" index="7" instance=ExtResource( 4 )]
+[node name="Prototype" parent="Level" index="4" instance=ExtResource( 4 )]
 
 [node name="CSGBox" type="CSGBox" parent="Level/Prototype" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -12 )
@@ -55,5 +46,5 @@ transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -7, 11,
 width = 24.0
 depth = 72.0
 
-[node name="GadgetVending" parent="Level" index="8" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 20 )
+[node name="GadgetVending" parent="Level" index="5" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 1, 23 )

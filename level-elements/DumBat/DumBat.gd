@@ -1,7 +1,8 @@
 extends KinematicBody
 
 const SWING_DIST: float = 2.0
-const CHASE_SPEED: float = 11.0
+
+signal death
 
 export var wandernoise: OpenSimplexNoise
 
@@ -16,7 +17,6 @@ func param(p_name):
 
 func set_param(p_name, val):
 	return tree.set("parameters/conditions/" + p_name, val)
-
 
 func _ready():
 	randomize()
@@ -42,10 +42,10 @@ func _physics_process(delta):
 		if $GonnaCrash.is_colliding() or not $GonnaFall.is_colliding():
 			rotation.y += (PI/2.0)*delta
 			noise_multiplier *= -1.0
-			vel = lerp(vel, Vector3(), delta*5.0)
+			vel = Util.vel_lerp(vel, Vector3(), delta*5.0)
 		else:
 			rotation.y += wandernoise.get_noise_1d(t)*delta*noise_multiplier
-			vel = lerp(vel, -global_transform.basis.z*3.0, delta*3.0)
+			vel = Util.vel_lerp(vel, -global_transform.basis.z*3.0, delta*3.0)
 	else:
 		var target := Basis()
 		target.y = Vector3(0, 1, 0)
@@ -53,11 +53,14 @@ func _physics_process(delta):
 		target.z.y = 0.0
 		target.z = target.z.normalized()
 		target.x = target.y.cross(target.z)
-		global_transform.basis = global_transform.basis.slerp(target, delta*9.0)
-		vel = lerp(vel, -global_transform.basis.z*CHASE_SPEED, delta*7.0)
+		global_transform.basis = global_transform.basis.orthonormalized().slerp(target, delta*9.0)
+		vel = Util.vel_lerp(vel, -global_transform.basis.z*Game.dumbat_chase_speed, delta*7.0)
 		
 	vel.y += -9.81*delta
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
+
+func hit(damage: int, from_point: Vector3):
+	vel = (global_transform.origin - from_point).normalized()*50.0
 
 func swing():
 	chasing.hit(1, global_transform.origin)
@@ -69,3 +72,9 @@ func _on_SightArea_body_entered(body):
 	var result: Dictionary = space_state.intersect_ray(global_transform.origin, body.global_transform.origin, [self])
 	if not result.empty():
 		chasing = body
+		if not chasing.is_connected("death", self, "_on_chasing_death"):
+			chasing.connect("death",self,"_on_chasing_death",[chasing])
+
+func _on_chasing_death(chasing_instance):
+	if chasing_instance == chasing:
+		chasing = null

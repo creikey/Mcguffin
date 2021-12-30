@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/finishline.png-5d55c4dfaa6381aa3403bf214737e4cb.s3tc.stex"
-path.etc2="res://.import/finishline.png-5d55c4dfaa6381aa3403bf214737e4cb.etc2.stex"
+path.s3tc="res://.import/finishline.png-6b8ca6acea135da330a8c61b5fb6f730.s3tc.stex"
+path.etc2="res://.import/finishline.png-6b8ca6acea135da330a8c61b5fb6f730.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://level-elements/finishline.png"
-dest_files=[ "res://.import/finishline.png-5d55c4dfaa6381aa3403bf214737e4cb.s3tc.stex", "res://.import/finishline.png-5d55c4dfaa6381aa3403bf214737e4cb.etc2.stex" ]
+source_file="res://level-elements/FinishLine/finishline.png"
+dest_files=[ "res://.import/finishline.png-6b8ca6acea135da330a8c61b5fb6f730.s3tc.stex", "res://.import/finishline.png-6b8ca6acea135da330a8c61b5fb6f730.etc2.stex" ]
 
 [params]
 

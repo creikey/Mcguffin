@@ -15,9 +15,9 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 4 )
 
 [node name="Torso" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Camera" type="Camera" parent="Torso"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08131, 0 )
 
 [node name="InteractCast" type="RayCast" parent="Torso/Camera"]
 enabled = true

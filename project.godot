@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player.gd"
+}, {
+"base": "Node",
+"class": "Util",
+"language": "GDScript",
+"path": "res://Util.gd"
 } ]
 _global_script_class_icons={
 "Gadget": "",
 "GadgetAPI": "",
 "GadgetPurchase": "",
-"Player": ""
+"Player": "",
+"Util": ""
 }
 
 [application]
@@ -41,6 +47,10 @@ _global_script_class_icons={
 config/name="Mcguffin"
 run/main_scene="res://prototype-levels/SimpleMain.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://Game.gd"
 
 [input]
 

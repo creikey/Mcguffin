@@ -1,34 +1,14 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://level-elements/finishline.png" type="Texture" id=1]
+[ext_resource path="res://level-elements/FinishLine/FinishLine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://concrete_floor_worn_001_1k.gltf/textures/concrete_floor_worn_001_rough_1k.jpg" type="Texture" id=3]
 [ext_resource path="res://shanghai_riverside_1k.exr" type="Texture" id=4]
 [ext_resource path="res://Reticle.png" type="Texture" id=5]
-[ext_resource path="res://concrete_floor_worn_001_1k.gltf/textures/concrete_floor_worn_001_nor_gl_1k.jpg" type="Texture" id=6]
-[ext_resource path="res://concrete_floor_worn_001_1k.gltf/textures/concrete_floor_worn_001_diff_1k.jpg" type="Texture" id=7]
-[ext_resource path="res://level-elements/FinishLine.gd" type="Script" id=8]
 [ext_resource path="res://gadgets/GadgetAPI.gd" type="Script" id=9]
-[ext_resource path="res://gadgets/GadgetVending.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://gadgets/GadgetInventoryInfo.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prototype-levels/SimpleMain.gd" type="Script" id=13]
 [ext_resource path="res://UI.gd" type="Script" id=14]
-
-[sub_resource type="SpatialMaterial" id=6]
-resource_name = "concrete_floor_worn_001"
-vertex_color_use_as_albedo = true
-params_cull_mode = 2
-albedo_texture = ExtResource( 7 )
-metallic_texture = ExtResource( 3 )
-metallic_texture_channel = 2
-roughness_texture = ExtResource( 3 )
-roughness_texture_channel = 1
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 6 )
-uv1_scale = Vector3( 0.2, 0.2, 0.2 )
-uv1_triplanar = true
 
 [sub_resource type="PanoramaSky" id=5]
 panorama = ExtResource( 4 )
@@ -39,15 +19,6 @@ background_sky = SubResource( 5 )
 adjustment_brightness = 0.68
 adjustment_contrast = 1.27
 
-[sub_resource type="BoxShape" id=7]
-extents = Vector3( 4, 4, 3 )
-
-[sub_resource type="SpatialMaterial" id=8]
-albedo_texture = ExtResource( 1 )
-
-[sub_resource type="CubeMesh" id=9]
-size = Vector3( 6, 2, 6 )
-
 [node name="SimpleMain" type="Spatial"]
 script = ExtResource( 13 )
 
@@ -55,6 +26,7 @@ script = ExtResource( 13 )
 script = ExtResource( 9 )
 _player_path = NodePath("../Player")
 _ui_path = NodePath("../UI")
+_env_node_path = NodePath("../Level/WorldEnvironment")
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
 transform = Transform( -0.999684, 0, 0.02513, 0, 1, 0, -0.02513, 0, -0.999684, 0, 1.84807, 0 )
@@ -122,58 +94,14 @@ margin_right = 687.0
 
 [node name="Level" type="Spatial" parent="."]
 
-[node name="Prototype" type="CSGCombiner" parent="Level"]
-material_override = SubResource( 6 )
-use_collision = true
-
-[node name="CSGBox" type="CSGBox" parent="Level/Prototype"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -1, -17 )
-width = 48.0
-depth = 48.0
-
-[node name="CSGBox4" type="CSGBox" parent="Level/Prototype"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0 )
-depth = 14.0
-
-[node name="CSGBox2" type="CSGBox" parent="Level/Prototype"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 8 )
-width = 14.0
-depth = 14.0
-
-[node name="CSGBox3" type="CSGBox" parent="Level/Prototype"]
-transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 8, 5, -4.76837e-07 )
-width = 14.0
-depth = 14.0
-
-[node name="DirectionalLight" type="DirectionalLight" parent="Level"]
-transform = Transform( 0.707107, 0.612372, -0.353553, 0, 0.5, 0.866025, 0.707107, -0.612373, 0.353553, 0, 5, 0 )
-light_bake_mode = 2
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
 environment = SubResource( 3 )
-
-[node name="GadgetVending" parent="Level" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5 )
 
 [node name="Spawnpoint" type="Position3D" parent="Level"]
 transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 1, 0 )
 
-[node name="FinishLine" type="Area" parent="Level"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -39 )
-script = ExtResource( 8 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Level/FinishLine"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 7 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Level/FinishLine"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-material_override = SubResource( 8 )
-mesh = SubResource( 9 )
-material/0 = null
+[node name="FinishLine" parent="Level" instance=ExtResource( 1 )]
 
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="toolbelt_changed" from="Player" to="UI" method="_on_Player_toolbelt_changed"]
-[connection signal="body_entered" from="Level/FinishLine" to="Level/FinishLine" method="_on_FinishLine_body_entered"]
 [connection signal="player_won" from="Level/FinishLine" to="." method="_on_FinishLine_player_won"]

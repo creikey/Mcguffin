@@ -9,11 +9,11 @@ signal toolbelt_changed # so ui can react to it
 # gadget is unequipped
 var default_params = {
 	mouse_sense = 0.01,
-	run_speed = 10.0,
-	feet_accel_factor = 9.0,
-	air_accel_factor = 2.0,
-	gravity = 15.0,
-	jump_vel = 8.0,
+	run_speed = Game.default_run_speed,
+	feet_accel_factor = Game.default_feet_accel_factor,
+	air_accel_factor = Game.default_air_accel_factor,
+	jump_airtime = Game.default_jump_airtime,
+	jump_height = Game.default_jump_height,
 	can_jump_func = funcref(self, "can_jump"),
 }
 
@@ -99,9 +99,12 @@ func _input(event):
 				self.activated_gadget = selected_gadget
 		emit_signal("toolbelt_changed")
 
+func kill():
+	emit_signal("death")
+
 func _physics_process(delta):
 	if global_transform.origin.y <= -5.0:
-		emit_signal("death")
+		kill()
 	var forward_backward: float = Input.get_action_strength("forward") - Input.get_action_strength("backward")
 	var left_right: float = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var movement: Vector3 = -cam.global_transform.basis.z*forward_backward + cam.global_transform.basis.x*left_right
@@ -111,12 +114,11 @@ func _physics_process(delta):
 	var accel_factor: float = params.air_accel_factor
 	if is_on_floor():
 		accel_factor = params.feet_accel_factor
-	vel.x = lerp(vel.x, movement.x, delta*accel_factor)
-	vel.z = lerp(vel.z, movement.z, delta*accel_factor)
+	vel = Util.vel_lerp(vel, movement, delta*accel_factor)
 	
 	if params.can_jump_func.call_func() and Input.is_action_just_pressed("jump"):
-		vel.y = params.jump_vel
+		vel.y = Util.calc_vel(params.jump_height, params.jump_airtime)
 	
-	vel.y -= params.gravity*delta
+	vel.y += Util.calc_gravity(params.jump_height, params.jump_airtime)*delta
 	
 	vel = move_and_slide(vel, Vector3(0, 1, 0))

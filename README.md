@@ -7,3 +7,4 @@ interactible - has interact(interacter: Player, interact_point: Vector3) and int
 
 entities - players/enemies, has 
 hit(damage: int, from_point: Vector3)
+signal death (for when they die)
