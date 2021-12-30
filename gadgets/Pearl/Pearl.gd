@@ -16,7 +16,7 @@ func on_activate():
 	lifespan_bar = preload("res://gadgets/Lifespanbar.tscn").instance()
 	lifespan_bar.gadget = self
 	lifespan_bar.max_val = Game.pearl_teleport_time
-	api.get_ui().add_child(lifespan_bar)
+	api.add_ui_node(lifespan_bar)
 
 func on_deactivate():
 	lifespan_bar.queue_free()

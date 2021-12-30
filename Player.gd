@@ -24,9 +24,15 @@ onready var interact_cast: RayCast = $Torso/Camera/InteractCast
 onready var toolbelt: Node = $Toolbelt # children must be Gadgets
 onready var gadget_api: GadgetAPI = $"../GadgetAPI" # gadgets need to see and feel too
 var money: int = 500
+var health: int = Game.max_health setget set_health
 var activated_gadget: Gadget = null setget set_activated_gadget
 
 var vel := Vector3()
+
+func set_health(new_health: int):
+	health = new_health
+	if health <= 0:
+		kill()
 
 func set_activated_gadget(new_activated_gadget):
 	if activated_gadget != null:
@@ -46,6 +52,7 @@ func spawn(spawnpoint: Transform):
 	_clear_toolbelt()
 	params = default_params.duplicate(true)
 	money = 500
+	health = Game.max_health
 
 func try_purchase(gadget: GadgetPurchase):
 	if money < gadget.price:
@@ -72,6 +79,7 @@ func can_jump() -> bool:
 
 func hit(damage: int, from_point: Vector3):
 	vel = (global_transform.origin - from_point).normalized()*50.0
+	self.health -= 1
 
 func _input(event):
 	if event.is_action_pressed("capture_mouse"):

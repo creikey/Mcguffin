@@ -26,6 +26,10 @@ func get_player_camera() -> Camera:
 func get_ui() -> Node:
 	return _ui
 
+func add_ui_node(node: Control):
+	_ui.add_child(node)
+	_ui.move_child(node, 0)
+
 func self_destruct(gadget_ref):
 	_player.on_gadget_request_destroy(gadget_ref)
 

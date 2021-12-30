@@ -6,6 +6,7 @@ const default_feet_accel_factor = 9.0
 const default_air_accel_factor = 2.0
 const default_jump_airtime = 0.7
 const default_jump_height = 2.0
+const max_health: int = 4
 
 # pearl
 const pearl_teleport_time = 3.0

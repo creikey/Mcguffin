@@ -3,9 +3,11 @@ extends CanvasLayer
 onready var player = $"../Player"
 
 onready var money = $MoneyLabel
+onready var heart_viewer = $HeartViewer
 
 func _process(_delta):
 	money.text = "$" + str(player.money)
+	heart_viewer.health = player.health
 
 func _on_Player_toolbelt_changed():
 	var c: int = 0
