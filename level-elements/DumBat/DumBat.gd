@@ -63,7 +63,10 @@ func hit(damage: int, from_point: Vector3):
 	vel = (global_transform.origin - from_point).normalized()*50.0
 
 func swing():
-	chasing.hit(1, global_transform.origin)
+	if is_instance_valid(chasing):
+		chasing.hit(1, global_transform.origin)
+	else:
+		chasing = null
 
 func _on_SightArea_body_entered(body):
 	if not body.is_in_group("entities"):

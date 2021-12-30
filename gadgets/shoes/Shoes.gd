@@ -1,16 +1,19 @@
 extends Gadget
 
-var lifespan: float = 5.0
+var lifespan: float = Game.shoe_lifespan
 var lifespan_bar = null
 
 func on_activate():
-	api.get_player().params.run_speed = 30.0
+	api.get_player().params.run_speed = Game.shoe_speed
+	api.set_fog(true)
+	
 	lifespan_bar = preload("res://gadgets/Lifespanbar.tscn").instance()
 	lifespan_bar.gadget = self
-	lifespan_bar.max_val = 5.0
+	lifespan_bar.max_val = Game.shoe_lifespan
 	api.get_ui().add_child(lifespan_bar)
 
 func on_deactivate():
+	api.set_fog(false)
 	lifespan_bar.queue_free()
 
 func _process(delta):

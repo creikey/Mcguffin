@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=4]
 radius = 0.74
 height = 1.7
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 1
+albedo_color = Color( 0.501961, 0.6, 0.701961, 0 )
+
+[sub_resource type="SphereMesh" id=5]
+radius = 50.0
+height = 100.0
 
 [node name="Player" type="KinematicBody" groups=["entities", "players"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84807, 0 )
@@ -26,3 +36,8 @@ cast_to = Vector3( 0, 0, -4 )
 collide_with_areas = true
 
 [node name="Toolbelt" type="Node" parent="."]
+
+[node name="FogBubble" type="MeshInstance" parent="."]
+material_override = SubResource( 6 )
+mesh = SubResource( 5 )
+material/0 = null
