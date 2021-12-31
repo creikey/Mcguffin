@@ -44,6 +44,7 @@ func set_activated_gadget(new_activated_gadget):
 		activated_gadget.activate()
 
 func _ready():
+	visible = true # fog sphere makes editor bounding box annoying
 	interact_cast.add_exception(self)
 
 func spawn(spawnpoint: Transform):
