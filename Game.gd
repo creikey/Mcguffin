@@ -16,8 +16,8 @@ const pearl_max_height = 30.0
 # dumbat
 #just barely slower than the shoes, you can toggle shoes on and off really fast
 #to cheat its cooldown. Important that it's faster than half the shoe speed boost
-const dumbat_chase_speed = default_run_speed*1.9
+const dumbat_chase_speed = default_run_speed*1.5
 
 # shoe
-const shoe_lifespan: float = 50.0
+const shoe_lifespan: float = 5.0
 const shoe_speed: float = default_run_speed*2.0

@@ -16,6 +16,7 @@
 panorama = ExtResource( 4 )
 
 [sub_resource type="Environment" id=3]
+resource_local_to_scene = true
 background_mode = 2
 background_sky = SubResource( 5 )
 fog_enabled = true

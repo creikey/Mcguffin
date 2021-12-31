@@ -70,6 +70,8 @@ func _physics_process(delta):
 	else:
 		turn_towards(chasing.global_transform.origin, delta*13.0)
 		vel = Util.vel_lerp(vel, -global_transform.basis.z*Game.dumbat_chase_speed, delta*7.0)
+		if global_transform.origin.y - chasing.global_transform.origin.y > 1.0: # jump off cliff detection
+			chasing = null
 		
 	vel.y += -9.81*delta*3.0
 	vel = move_and_slide(vel, Vector3(0, 1, 0))
