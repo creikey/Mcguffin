@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://level-elements/FinishLine/FinishLine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://letter/letter-icon.png" type="Texture" id=1]
 [ext_resource path="res://font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Heart.tscn" type="PackedScene" id=3]
 [ext_resource path="res://shanghai_riverside_1k.exr" type="Texture" id=4]
@@ -66,6 +66,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TimeLabel" type="Label" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -273.0
+margin_top = 92.0
+margin_bottom = 188.0
+custom_fonts/font = ExtResource( 2 )
+text = "105.5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GadgetInventory" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -109,16 +122,24 @@ __meta__ = {
 }
 heart_pack = ExtResource( 3 )
 
+[node name="HasLetter" type="TextureRect" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -152.0
+margin_right = 155.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Level" type="Spatial" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
 environment = SubResource( 3 )
 
 [node name="Spawnpoint" type="Position3D" parent="Level"]
-transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 1, 0 )
-
-[node name="FinishLine" parent="Level" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 57, 0 )
 
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="toolbelt_changed" from="Player" to="UI" method="_on_Player_toolbelt_changed"]
-[connection signal="player_won" from="Level/FinishLine" to="." method="_on_FinishLine_player_won"]

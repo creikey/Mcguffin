@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://prototype-levels/SimpleMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://AcidVat.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://level-elements/Prototype.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gadgets/GadgetVending.tscn" type="PackedScene" id=5]
 [ext_resource path="res://shanghai_riverside_1k.exr" type="Texture" id=6]
+[ext_resource path="res://MailBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://letter/Letter.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PanoramaSky" id=5]
 panorama = ExtResource( 6 )
@@ -127,10 +129,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 25, -25 )
 [node name="Position3D2" type="Position3D" parent="Level/Patrol3" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26 )
 
-[node name="FinishLine" parent="Level" index="18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 25, -4 )
-
-[node name="Prototype" parent="Level" index="19" instance=ExtResource( 4 )]
+[node name="Prototype" parent="Level" index="18" instance=ExtResource( 4 )]
+snap = 0.045
 
 [node name="CSGBox" type="CSGBox" parent="Level/Prototype" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -21 )
@@ -154,7 +154,7 @@ depth = 104.0
 
 [node name="CSGBox9" type="CSGBox" parent="Level/Prototype" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 22, -12 )
-width = 32.0
+width = 38.0
 depth = 40.0
 
 [node name="CSGBox11" type="CSGBox" parent="Level/Prototype" index="5"]
@@ -213,55 +213,75 @@ width = 40.0
 depth = 10.0
 
 [node name="CSGBox21" type="CSGBox" parent="Level/Prototype" index="16"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 22, -6 )
-width = 14.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 22, -6 )
+width = 22.0
 depth = 10.0
 
 [node name="CSGBox22" type="CSGBox" parent="Level/Prototype" index="17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 22, -6 )
-width = 14.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 22, -6 )
+width = 22.0
 depth = 10.0
 
-[node name="CSGBox2" type="CSGBox" parent="Level/Prototype" index="18"]
-transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -22, 9, 28 )
-width = 74.0
-depth = 150.0
+[node name="CSGBox23" type="CSGBox" parent="Level/Prototype" index="18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 41, -6 )
+width = 26.0
+depth = 16.0
 
-[node name="CSGBox3" type="CSGBox" parent="Level/Prototype" index="19"]
+[node name="Visible2" type="CSGBox" parent="Level/Prototype" index="19"]
+transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 24, 9, 30 )
+width = 74.0
+height = 10.0
+depth = 74.0
+
+[node name="Visible" type="CSGBox" parent="Level/Prototype" index="20"]
+transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -60, 9, 30 )
+width = 84.0
+height = 10.0
+depth = 112.0
+
+[node name="CSGBox3" type="CSGBox" parent="Level/Prototype" index="21"]
 transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -22, 9, -52 )
 width = 76.0
-depth = 152.0
+depth = 180.0
 
-[node name="CSGBox4" type="CSGBox" parent="Level/Prototype" index="20"]
-transform = Transform( 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 51, 9, -9 )
+[node name="CSGBox4" type="CSGBox" parent="Level/Prototype" index="22"]
+transform = Transform( 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 59, 9, -9 )
 width = 74.0
 depth = 106.0
 
-[node name="CSGBox5" type="CSGBox" parent="Level/Prototype" index="21"]
-transform = Transform( 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -72, 9, -9 )
+[node name="CSGBox5" type="CSGBox" parent="Level/Prototype" index="23"]
+transform = Transform( 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -72, 9, -13 )
 width = 64.0
-depth = 106.0
+depth = 66.0
 
-[node name="GadgetVending" parent="Level" index="20" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 24, -8 )
+[node name="GadgetVending" parent="Level" index="19" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 22, -8 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="Level" index="21"]
+[node name="DirectionalLight" type="DirectionalLight" parent="Level" index="20"]
 transform = Transform( 0.866025, 0.353553, -0.353553, 0, 0.707107, 0.707107, 0.5, -0.612372, 0.612372, 0, 0, 0 )
 
-[node name="AcidVat" parent="Level" index="22" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -1, 23 )
+[node name="AcidVat" parent="Level" index="21" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -1, 23 )
 
-[node name="AcidVat2" parent="Level" index="23" instance=ExtResource( 2 )]
+[node name="AcidVat2" parent="Level" index="22" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25, -11 )
 
-[node name="AcidVat6" parent="Level" index="24" instance=ExtResource( 2 )]
+[node name="AcidVat6" parent="Level" index="23" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25, -5 )
 
-[node name="AcidVat3" parent="Level" index="25" instance=ExtResource( 2 )]
+[node name="AcidVat3" parent="Level" index="24" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25, -20 )
 
-[node name="AcidVat4" parent="Level" index="26" instance=ExtResource( 2 )]
+[node name="AcidVat4" parent="Level" index="25" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25, -28 )
 
-[node name="AcidVat5" parent="Level" index="27" instance=ExtResource( 2 )]
+[node name="AcidVat5" parent="Level" index="26" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25, 2 )
+
+[node name="MailBox" parent="Level" index="27" instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -57, 23, -10 )
+
+[node name="Letter" parent="Level" index="28" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 28, -3 )
+
+[connection signal="mail_collected" from="Level/MailBox" to="." method="_on_MailBox_mail_collected"]

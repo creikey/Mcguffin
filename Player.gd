@@ -24,6 +24,8 @@ onready var interact_cast: RayCast = $Torso/Camera/InteractCast
 onready var toolbelt: Node = $Toolbelt # children must be Gadgets
 onready var gadget_api: GadgetAPI = $"../GadgetAPI" # gadgets need to see and feel too
 var money: int = 500
+var time: float = 0.0
+var has_mail: bool = false
 var health: int = Game.max_health setget set_health
 var activated_gadget: Gadget = null setget set_activated_gadget
 
@@ -53,6 +55,7 @@ func spawn(spawnpoint: Transform):
 	_clear_toolbelt()
 	params = default_params.duplicate(true)
 	money = 500
+	has_mail = false
 	health = Game.max_health
 
 func try_purchase(gadget: GadgetPurchase):
@@ -112,6 +115,7 @@ func kill():
 	emit_signal("death")
 
 func _physics_process(delta):
+	time += delta
 	if global_transform.origin.y <= -5.0:
 		kill()
 	var forward_backward: float = Input.get_action_strength("forward") - Input.get_action_strength("backward")

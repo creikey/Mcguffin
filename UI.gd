@@ -8,6 +8,8 @@ onready var heart_viewer = $HeartViewer
 func _process(_delta):
 	money.text = "$" + str(player.money)
 	heart_viewer.health = player.health
+	$HasLetter.visible = player.has_mail
+	$TimeLabel.text = str(stepify(player.time, 0.1))
 
 func _on_Player_toolbelt_changed():
 	var c: int = 0

@@ -9,9 +9,9 @@ const default_jump_height = 2.0
 const max_health: int = 4
 
 # pearl
-const pearl_teleport_time = 3.0
-const pearl_airtime = 3.0
-const pearl_max_height = 30.0
+const pearl_teleport_time = 2.0
+const pearl_airtime = 2.0
+const pearl_max_height = 45.0
 
 # dumbat
 #just barely slower than the shoes, you can toggle shoes on and off really fast

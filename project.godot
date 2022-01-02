@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mcguffin"
-run/main_scene="res://prototype-levels/SimpleMain.tscn"
+run/main_scene="res://prototype-levels/Drawbridge.tscn"
 config/icon="res://icon.png"
 
 [autoload]
