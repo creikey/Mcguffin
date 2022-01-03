@@ -282,6 +282,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25, 2 )
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -57, 23, -10 )
 
 [node name="Letter" parent="Level" index="28" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 28, -3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 28, -6 )
 
 [connection signal="mail_collected" from="Level/MailBox" to="." method="_on_MailBox_mail_collected"]

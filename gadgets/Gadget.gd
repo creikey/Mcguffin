@@ -4,23 +4,26 @@ class_name Gadget
 
 var api: GadgetAPI = null # must be set before activate, interface to the outside!
 export var inventory_icon: Texture
-var activated: bool = false
+var activated: bool = false setget set_activated
+
+func set_activated(new_activated):
+	activated = new_activated
+	set_process(activated)
+	set_physics_process(activated)
+	set_process_input(activated)
 
 func _ready():
-	set_process(false)
-	set_physics_process(false)
+	self.activated = false
 
 func activate():
-	activated = true
-	set_process(true)
-	set_physics_process(true)
-	on_activate()
+	if not activated:
+		self.activated = true
+		on_activate()
 	
 func deactivate():
-	activated = false
-	set_process(false)
-	set_physics_process(false)
-	on_deactivate()
+	if activated:
+		self.activated = false
+		on_deactivate()
 
 func on_activate():
 	# override this method

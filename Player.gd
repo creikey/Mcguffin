@@ -37,9 +37,9 @@ func set_health(new_health: int):
 		kill()
 
 func set_activated_gadget(new_activated_gadget):
-	if activated_gadget != null:
+	if activated_gadget != null and activated_gadget != new_activated_gadget:
 		activated_gadget.deactivate()
-	params = default_params.duplicate(true)
+	reset_params()
 	activated_gadget = new_activated_gadget
 	if activated_gadget != null:
 		activated_gadget.api = gadget_api
@@ -53,10 +53,12 @@ func spawn(spawnpoint: Transform):
 	vel = Vector3()
 	global_transform = spawnpoint
 	_clear_toolbelt()
-	params = default_params.duplicate(true)
 	money = 500
 	has_mail = false
 	health = Game.max_health
+
+func reset_params():
+	params = default_params.duplicate(true)
 
 func try_purchase(gadget: GadgetPurchase):
 	if money < gadget.price:
@@ -67,9 +69,15 @@ func try_purchase(gadget: GadgetPurchase):
 		emit_signal("toolbelt_changed")
 
 func on_gadget_request_destroy(gadget_ref):
-	if gadget_ref == activated_gadget:
+	if gadget_ref == self.activated_gadget:
 		self.activated_gadget = null
 	gadget_ref.queue_free()
+	if gadget_ref is Shoes:
+		for other_gadget in toolbelt.get_children():
+			if other_gadget is Shoes and other_gadget != gadget_ref:
+				self.activated_gadget = other_gadget
+				self.activated_gadget.running = true
+				break
 	emit_signal("toolbelt_changed")
 
 func _clear_toolbelt():

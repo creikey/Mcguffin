@@ -20,6 +20,12 @@ var _fog_enabled: bool = false
 func get_player() -> Node:
 	return _player
 
+func set_player_param(param: String, value):
+	_player.params[param] = value
+
+func reset_player_params():
+	_player.reset_params()
+
 func get_player_camera() -> Camera:
 	return _player.get_node("Torso/Camera")
 
