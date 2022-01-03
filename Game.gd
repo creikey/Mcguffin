@@ -19,5 +19,5 @@ const pearl_max_height = 45.0
 const dumbat_chase_speed = default_run_speed*1.5
 
 # shoe
-const shoe_lifespan: float = 5.0
+const shoe_lifespan: float = 3.0
 const shoe_speed: float = default_run_speed*2.0
