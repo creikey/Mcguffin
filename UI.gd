@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var player = $"../Player"
+onready var player = get_parent()
 
 onready var money = $MoneyLabel
 onready var heart_viewer = $HeartViewer

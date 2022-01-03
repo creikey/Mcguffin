@@ -9,13 +9,17 @@ const _fog_environment: Environment = preload("res://fog_environment.tres")
 # gadgets do things to the player and optionally add a ui node to the ui canvaslayer
 export (NodePath) var _player_path
 export (NodePath) var _ui_path
-export (NodePath) var _env_node_path # used for fog!
+export (NodePath) var _camera_path # used for fog!
 
 onready var _player = get_node(_player_path)
 onready var _ui = get_node(_ui_path)
-onready var _env_node: WorldEnvironment = get_node(_env_node_path)
-onready var _old_environment: Environment = _env_node.environment.duplicate(false)
+onready var _camera: Camera = get_node(_camera_path)
+onready var _old_environment: Environment = null
 var _fog_enabled: bool = false
+
+func set_old_environment(env: Environment):
+	_old_environment = env
+	_camera.environment = _old_environment.duplicate(false)
 
 func get_player() -> Node:
 	return _player
@@ -40,10 +44,10 @@ func self_destruct(gadget_ref):
 	_player.on_gadget_request_destroy(gadget_ref)
 
 func spawn_in(node: Node):
-	get_parent().add_child(node)
+	_player.get_parent().add_child(node)
 
 func _process(delta):
-	var env: Environment = _env_node.environment
+	var env: Environment = _camera.environment
 	var target_env: Environment = _old_environment
 	var target_fog_bubble_alpha: float = 0.0
 	var fog_bubble_mat: SpatialMaterial = _player.get_node("FogBubble").material_override

@@ -17,12 +17,14 @@ var default_params = {
 	can_jump_func = funcref(self, "can_jump"),
 }
 
+export (NodePath) var original_environment_path
+
 onready var params = default_params.duplicate(true)
 onready var torso = $Torso
 onready var cam = $Torso/Camera
 onready var interact_cast: RayCast = $Torso/Camera/InteractCast
 onready var toolbelt: Node = $Toolbelt # children must be Gadgets
-onready var gadget_api: GadgetAPI = $"../GadgetAPI" # gadgets need to see and feel too
+onready var gadget_api: GadgetAPI = $GadgetAPI # gadgets need to see and feel too
 var money: int = 500
 var time: float = 0.0
 var has_mail: bool = false
@@ -48,6 +50,7 @@ func set_activated_gadget(new_activated_gadget):
 func _ready():
 	visible = true # fog sphere makes editor bounding box annoying
 	interact_cast.add_exception(self)
+	$GadgetAPI.set_old_environment(get_node(original_environment_path).environment)
 
 func spawn(spawnpoint: Transform):
 	vel = Vector3()
