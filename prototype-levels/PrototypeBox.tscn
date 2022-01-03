@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://prototype-levels/CSGToPrototype.gd" type="Script" id=1]
+[ext_resource path="res://concrete_floor_worn_001_1k.gltf/textures/concrete_floor_worn_001_diff_1k.jpg" type="Texture" id=2]
+[ext_resource path="res://concrete_floor_worn_001_1k.gltf/textures/concrete_floor_worn_001_rough_1k.jpg" type="Texture" id=3]
+[ext_resource path="res://concrete_floor_worn_001_1k.gltf/textures/concrete_floor_worn_001_nor_gl_1k.jpg" type="Texture" id=4]
+
+[sub_resource type="SpatialMaterial" id=2]
+resource_name = "concrete_floor_worn_001"
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_texture = ExtResource( 2 )
+metallic_texture = ExtResource( 3 )
+metallic_texture_channel = 2
+roughness_texture = ExtResource( 3 )
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )
+uv1_scale = Vector3( 0.2, 0.2, 0.2 )
+uv1_triplanar = true
+
+[node name="PrototypeBox" type="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -21 )
+material_override = SubResource( 2 )
+width = 180.0
+depth = 78.0
+script = ExtResource( 1 )
